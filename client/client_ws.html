@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>ws</h1>
+    <button onclick="send()">send num</button>
+    <script>
+        var log = console.log.bind(console)
+        var ws = new WebSocket('ws://127.0.0.1:9501')
+        ws.onopen = function(event) {
+            log('open')
+            ws.send('client open')
+        }
+        ws.onmessage = function(event) {
+            log(event.data)
+        }
+        ws.onclose = function(event) {
+            log('close info', event)
+        }
+        function send() {
+            ws.send(Math.random() * 10000)
+        }
+    </script>
+</body>
+</html>
