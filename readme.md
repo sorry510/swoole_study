@@ -4,3 +4,4 @@
 3. telnet 127.0.0.1 9501
 4. curl 127.0.0.1:9501
 5. ps -efH | grep php
+6. pidof '进程名称' 查询xx进程的进程id

@@ -8,6 +8,11 @@ $serv->set([
     'worker_num'=> 4,
 ]);
 
+// 重新设置主进程名
+$serv->on('start', function(Server $serv) {
+	swoole_set_process_name("tcp-server");
+});
+
 $serv->on('connect', function($serv, $fd, $reactorId) {
     echo "Client:Connect.\n";
 });
